@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+  /* Custom styles for the green color scheme */
+  body {
+      background-color: #f2f2f2;
+  }
+  .form-control,
+  .btn-primary {
+      border-color: #28a745;
+  }
+  .btn-primary {
+      background-color: #28a745;
+  }
+  .btn-primary:hover {
+      background-color: #1d7d39;
+      border-color: #1d7d39;
+  }
