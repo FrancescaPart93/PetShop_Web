@@ -41,11 +41,11 @@ public class UpdateManager extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idString = request.getParameter("id"); //mi legge come stringa l'id dal form
+		String idString = request.getParameter("id"); // legge come stringa l'id dal form
 		
 		int id = Integer.parseInt(idString); // parsa l'id 
 		
-		Utente u = UtenteDao.getRecordById2(id);  // mi ritorna l'utente in cui passo l'id che legge dal form
+		Utente u = UtenteDao.getRecordById(id);  // ritorna l'utente in cui passo l'id che legge dal form
 		
 		if (u != null) {
 			

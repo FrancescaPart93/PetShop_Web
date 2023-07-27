@@ -10,17 +10,15 @@ import java.util.Date;
 
 public class Utente {
 
-	private int tentativiPwd = 3;
 	private int id;
 	private String nome, cognome, email, telefono, password, ruolo, stato, username;
 	private LocalDate data;
-	
+	private int tentativiLogin;
 
 
-	public Utente(int id, String nome, String cognome, String email, String telefono, String password, String ruolo, String stato,
-			LocalDate data) {
+	public Utente(String nome, String cognome, String email, String telefono, String password, String ruolo, String stato,
+			LocalDate data, int tentativiLogin) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -29,6 +27,7 @@ public class Utente {
 		this.ruolo = ruolo;
 		this.stato = stato;
 		this.data= data;
+		this.tentativiLogin = tentativiLogin;
 	}
 	
 	
@@ -156,37 +155,30 @@ public class Utente {
 
 
 	
-	
-	
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
 
 
-
-	public int getTentativiPwd() {
-		return tentativiPwd;
+	public int getTentativiLogin() {
+		return tentativiLogin;
 	}
 
 
 
-
-	public void setTentativiPwd(int tentativiPwd) {
-		this.tentativiPwd = tentativiPwd;
+	public void setTentativiLogin(int tentativiLogin) {
+		this.tentativiLogin = tentativiLogin;
 	}
 
 
-	public void decrementaTentativo() {
-		this.tentativiPwd --;
-	}
 
 
 	@Override
 	public String toString() {
-		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", telefono="
-				+ telefono + ", password=" + password + ", ruolo=" + ruolo + ", stato=" + stato + ", username="
-				+ username + ", data=" + data + "]";
+		return "Utente [tentativiLogin=" + tentativiLogin + ", id=" + id + ", nome=" + nome + ", cognome=" + cognome
+				+ ", email=" + email + ", telefono=" + telefono + ", password=" + password + ", ruolo=" + ruolo
+				+ ", stato=" + stato + ", username=" + username + ", data=" + data + "]";
 	}
 
 

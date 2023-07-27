@@ -11,16 +11,16 @@ import it.betacom.bean.Utente;
 import it.betacom.dao.UtenteDao;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class UpdateStato
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/UpdateStato")
+public class UpdateStato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public UpdateStato() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,22 +37,25 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		Utente utente = UtenteDao.getRecordByEmail(email);
+		String idString = request.getParameter("id"); //mi legge come stringa l'id dal form
 		
-		utente = UtenteDao.controlloLogin(email, password, utente);
-		if(utente != null && utente.getRuolo().equals("M") ) {
-	        response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
-		}else if (utente != null && utente.getRuolo().equals("G")) {
-	        response.sendRedirect(request.getContextPath() + "/arrivoguest.jsp");
-		}else {
-	        response.sendRedirect(request.getContextPath() + "/error.jsp");
-
+		int id = Integer.parseInt(idString); // parsa l'id 
+		
+		Utente u = UtenteDao.getRecordById(id); // mi ritorna l'utente in cui passo l'id che legge dal form
+		
+		String stato = request.getParameter("stato");
+		String nuovoStato;
+	
+		if(stato.equals("A")){
+			nuovoStato = "D";
+		}else{
+			nuovoStato = "A";
 		}
+		
+		UtenteDao.updateStato(id, nuovoStato);
+		
+		response.sendRedirect(request.getContextPath() + "/successomodifica.jsp");
 	}
 
 }
