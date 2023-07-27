@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lista Utenti</title>
+<title>Arrivo guest</title>
 </head>
 <body>
 	<h1> Login effettuato con successo !</h1>
@@ -18,7 +18,6 @@ request.setAttribute("list", list);
 <tr><th>Id</th><th>Nome</th><th>Cognome</th><th>Email</th><th>Telefono</th><th>Ruolo</th><th>Stato</th><th>Username</th></tr>
 
 <c:forEach items="${list}" var="u">
-
 
 	<tr><td>${u.getId()}</td><td>${u.getNome()}</td><td>${u.getCognome()}</td><td>${u.getEmail()}</td><td>${u.getTelefono()}</td><td>${u.getRuolo()}</td><td>${u.getStato()}</td><td>${u.getUsername()}</td></tr>
 </c:forEach>

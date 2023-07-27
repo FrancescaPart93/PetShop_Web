@@ -50,18 +50,7 @@ public class Register extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// mi riporta al metodo doget che mi permette di effettuare la registrazione
-//		doGet(request, response);
-//		
-//		// mi reinderizza alla pagina di login
-//		response.sendRedirect(request.getContentType() + "/login.jsp");
-//		//response.sendRedirect(request.getContextPath() + "./src/main/webapp/login.jsp");
-//		 response.sendRedirect(request.getContextPath() + "/login.jsp");
-//	}
     
-    
- 
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // La gestione della logica di registrazione deve avvenire nel metodo doPost().

@@ -189,4 +189,70 @@ public class UtenteDao {
 	    return null;
 	
 	}
+	
+	
+	
+	// metodo per la modifica del ruolo da parte del manager
+	public static void updateRuolo(int id, String ruolo){
+		
+		try{
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("update utente set ruolo=? where id=?");
+			ps.setString(1, ruolo);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+		}catch(Exception e){System.out.println(e);}
+		
+	}
+	
+	public static void updateStato(int id, String stato){
+		
+		try{
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("update utente set stato=? where id=?");
+			ps.setString(1, stato);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+		}catch(Exception e){System.out.println(e);}
+
+	}
+	
+	public static void update(int id, String email, String password, String telefono){
+		
+		try{
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("update utente set email = ?, password = ?, telefono = ? where id = ?");
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ps.setString(3, telefono);
+			ps.setInt(4, id);
+			ps.executeUpdate();
+		}catch(Exception e){System.out.println(e);}
+
+	}
+	
+	
+	public static Utente getRecordById2(int id){
+		Utente u = null;
+		try{
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("select * from utente where id = ?");
+			ps.setInt(1,id);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+				u = new Utente();
+				u.setId(rs.getInt("id"));
+				u.setNome(rs.getString("nome"));
+				u.setCognome(rs.getString("cognome"));
+				u.setEmail(rs.getString("email"));
+				u.setPassword(rs.getString("password"));
+				u.setTelefono(rs.getString("telefono"));
+				u.setUsername(rs.getString("username"));
+			}
+		}catch(Exception e){System.out.println(e);}
+		System.out.println(u);
+		return u;
+		
+		
+	}
 }
