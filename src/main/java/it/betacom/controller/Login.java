@@ -44,7 +44,9 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		Utente utente = UtenteDao.getRecordByEmail(email);
 		
+		
 		utente = UtenteDao.controlloLogin(email, password, utente);
+		
 		if(utente != null && utente.getRuolo().equals("M") ) {
 	        response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
 		}else if (utente != null && utente.getRuolo().equals("G")) {
@@ -54,5 +56,7 @@ public class Login extends HttpServlet {
 
 		}
 	}
+	
+
 
 }

@@ -1,0 +1,20 @@
+
+CREATE TABLE clienti (
+  idCliente int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome varchar(255),
+  cognome varchar(255),
+  citta varchar(255),
+  telefono varchar(255),
+  indirizzo varchar(255)
+)
+
+
+CREATE TABLE animali (
+  matricola varchar(255) PRIMARY KEY,
+  tipo varchar(255),
+  nome varchar(255),
+  dataAcquisto varchar(255),
+  prezzo double,
+  idCliente int,
+  foreign key (idCliente) references clienti(idCliente)
+)

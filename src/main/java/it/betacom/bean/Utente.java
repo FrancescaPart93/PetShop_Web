@@ -14,27 +14,11 @@ public class Utente {
 	private String nome, cognome, email, telefono, password, ruolo, stato, username;
 	private LocalDate data;
 	private int tentativiLogin;
-
-
-	public Utente(String nome, String cognome, String email, String telefono, String password, String ruolo, String stato,
-			LocalDate data, int tentativiLogin) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.email = email;
-		this.telefono = telefono;
-		this.password = password;
-		this.ruolo = ruolo;
-		this.stato = stato;
-		this.data= data;
-		this.tentativiLogin = tentativiLogin;
-	}
-	
 	
 
 
 	public Utente(String nome, String cognome, String email, String telefono, String password, String ruolo,
-			String stato, String username, LocalDate data) {
+			String stato, LocalDate data, int tentativiLogin) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
@@ -43,10 +27,9 @@ public class Utente {
 		this.password = password;
 		this.ruolo = ruolo;
 		this.stato = stato;
-		this.username = username;
 		this.data = data;
+		this.tentativiLogin = tentativiLogin;
 	}
-
 
 
 
@@ -191,9 +174,9 @@ public class Utente {
 	                      this.data.getYear();
 
 	    // Connessione al database e controllo dell'esistenza dell'username
-	    String jdbcUrl = "jdbc:mysql://localhost:3306/petshop_web"; // Inserisci il tuo URL del database
-	    String dbUsername = "root"; // Inserisci il tuo username del database
-	    String dbPassword = "root"; // Inserisci la tua password del database
+	    String jdbcUrl = "jdbc:mysql://localhost:3306/petshop_web"; 
+	    String dbUsername = "root"; 
+	    String dbPassword = "root";
 
 	    try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUsername, dbPassword)) {
 	        String checkQuery = "SELECT COUNT(*) AS count FROM utente WHERE username = ?";
@@ -206,7 +189,7 @@ public class Utente {
 	        int suffix = 1;
 	        String originalUsername = username;
 	        while (count > 0) {
-	            // Se l'username esiste già nel database, aggiungi un underscore e un numero autoincrementale
+	            // Se l'username esiste già nel database, aggiunge un (_) e un numero autoincrementale
 	            username = originalUsername + "_" + suffix;
 	            checkStmt.setString(1, username);
 	            resultSet = checkStmt.executeQuery();

@@ -42,14 +42,14 @@
 					<form action="UpdateRuolo" method = "post">
 						<input type="hidden" name="id" value="${u.getId()}">
 						<input type="hidden" name="ruolo" value="${u.getRuolo()}">
-						<button type="submit" class="btn btn-warning" data-id="${u.getId()}">${u.getRuolo()}</button>	
+						<button type="submit" class="btn btn-warning">${u.getRuolo()}</button>	
 					</form>
 				</td>
 				<td class = "p-2">
 					<form action="UpdateStato" method = "post">
 						<input type="hidden" name="id" value="${u.getId()}">
 						<input type="hidden" name="stato" value="${u.getStato()}">
-						<button type="submit" class="btn btn-warning" data-id="${u.getId()}">${u.getStato()}</button>	
+						<button type="submit" class="btn btn-warning">${u.getStato()}</button>	
 					</form>
 				</td>
 				<td>

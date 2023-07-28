@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import it.betacom.bean.Utente;
@@ -122,69 +123,67 @@ public class UtenteDao {
 
 	
 	public static Utente getRecordByEmail(String email){
-		Utente u = null;
-		try{
-			Connection con=getConnection();
-			PreparedStatement ps=con.prepareStatement("select * from utente where email= ?");
-			ps.setString(1,email);
-			ResultSet rs=ps.executeQuery();
-			while(rs.next()){
-				u = new Utente();
-				u.setId(rs.getInt("id"));
-				u.setNome(rs.getString("nome"));
-				u.setCognome(rs.getString("cognome"));
-				u.setEmail(rs.getString("email"));
-				u.setPassword(rs.getString("password"));
-				u.setTelefono(rs.getString("telefono"));
-				u.setStato(rs.getString("stato"));
-				u.setRuolo(rs.getString("ruolo"));
-				u.setUsername(rs.getString("username"));
+        Utente u = null;
+        try{
+            Connection con=getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from utente where email= ?");
+            ps.setString(1,email);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                u = new Utente();
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setCognome(rs.getString("cognome"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password"));
+                u.setTelefono(rs.getString("telefono"));
+                u.setStato(rs.getString("stato"));
+                u.setRuolo(rs.getString("ruolo"));
+                u.setUsername(rs.getString("username"));
+                u.setTentativiLogin(rs.getInt("tentativiLogin"));
 
 
-//				u.setData(rs.getDate(Date.valueOf(u.getData())));
-//				ps.setDate(6,Date.valueOf(utente.getData()));
-			}
-		}catch(Exception e){System.out.println(e);}
-		return u;
-	}
-	
+//                u.setData(rs.getDate(Date.valueOf(u.getData())));
+//                ps.setDate(6,Date.valueOf(utente.getData()));
+            }
+        }catch(Exception e){System.out.println(e);}
+        return u;
+    }
 	
 	
 	
 	public static Utente controlloLogin(String email, String password, Utente utente) {
-		utente.toString();
-		if (utente != null && utente.getStato().equals("A")) {
-	        if (utente.getPassword().equals(password)) {
-	            System.out.println("Accesso effettuato");
-	            System.out.println(utente.toString());
-	           // utente.setTentativiPwd(3); // Reimposta il numero di tentativi quando l'accesso ha successo
-	            return utente;
-	        } else {
-	        	int tentativi;
-	    		try{
-	    			Connection con=getConnection();
-	    			PreparedStatement ps=con.prepareStatement("update utente set tentativiLogin=? where id=?");
-	    		    tentativi = utente.getTentativiLogin()-1;
-		            System.out.println(utente.toString());
-	    			ps.setInt(1, tentativi);
-	    			ps.setInt(2, utente.getId());
-	    			ps.executeUpdate();
-	    		 	System.out.println("Password errata! Tentativi rimanenti: " + tentativi);
-		        	 if (tentativi == 0) {
-		 	                updateStato(utente.getId(), "D");
-		 	                System.out.println("Contatta il servizio clienti");
-		 	            }
-	    			
-	    		}catch(Exception e){System.out.println(e);}
-	       
-	        }
-	    } else {
-	        System.out.println("Utente non trovato o disabilitato");
-	    }
-	    return null;
-	}
-	
-	
+        utente.toString();
+        if (utente != null && utente.getStato().equals("A")) {
+            if (utente.getPassword().equals(password)) {
+                System.out.println("Accesso effettuato");
+                System.out.println(utente.toString());
+               // utente.setTentativiPwd(3); // Reimposta il numero di tentativi quando l'accesso ha successo
+                return utente;
+            } else {
+                int tentativi;
+                try{
+                    Connection con=getConnection();
+                    PreparedStatement ps=con.prepareStatement("update utente set tentativiLogin=? where id=?");
+                    tentativi = utente.getTentativiLogin()-1;
+                    System.out.println(utente.toString());
+                    ps.setInt(1, tentativi);
+                    ps.setInt(2, utente.getId());
+                    ps.executeUpdate();
+                     System.out.println("Password errata! Tentativi rimanenti: " + tentativi);
+                     if (tentativi == 0) {
+                             updateStato(utente.getId(), "D");
+                             System.out.println("Contatta il servizio clienti");
+                         }
+
+                }catch(Exception e){System.out.println(e);}
+
+            }
+        } else {
+            System.out.println("Utente non trovato o disabilitato");
+        }
+        return null;
+    }
 	
 	// metodo per la modifica del ruolo da parte del manager
 	public static void updateRuolo(int id, String nuovoRuolo){
@@ -199,6 +198,8 @@ public class UtenteDao {
 		
 	}
 	
+	
+	// metodo per la modifica dello stato da parte del manager
 	public static void updateStato(int id, String nuovoStato){
 		
 		try{
@@ -210,6 +211,8 @@ public class UtenteDao {
 		}catch(Exception e){System.out.println(e);}
 
 	}
+	
+
 	
 	public static void update(int id, String email, String password, String telefono){
 		
