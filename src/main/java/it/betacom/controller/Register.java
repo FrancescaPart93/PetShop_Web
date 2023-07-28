@@ -32,29 +32,10 @@ public class Register extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-//		UtenteDao.getConnection();
-//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ResponseServlet");
-//
-//		//creazione e salvataggio utente tramite Dao.save()
-//		Utente utente = new Utente(request.getParameter("nome"), request.getParameter("cognome"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("password"), "G", "A", request.getParameter("username"),LocalDate.parse(request.getParameter("data")));
-//		UtenteDao.save(utente);
-//		
-//		dispatcher.forward(request, response);
-//
-//	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
     
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // La gestione della logica di registrazione deve avvenire nel metodo doPost().
-        // Poiché doGet() viene utilizzato per richieste HTTP GET, non è necessario aggiungere nulla qui.
+       
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -168,7 +168,7 @@ public class Utente {
 
 
 	public String generateUsername() {
-	    // Prendi le prime due lettere del nome e del cognome
+	    // Prende le prime due lettere del nome e del cognome
 	    String username = (nome.length() >= 2 ? nome.substring(0, 2).toLowerCase() : nome.toLowerCase()) +
 	                      (cognome.length() >= 2 ? cognome.substring(0, 2).toLowerCase() : cognome.toLowerCase()) +
 	                      this.data.getYear();

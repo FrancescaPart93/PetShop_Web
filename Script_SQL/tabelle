@@ -18,3 +18,11 @@ CREATE TABLE animali (
   idCliente int,
   foreign key (idCliente) references clienti(idCliente)
 )
+
+
+INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `telefono`, `indirizzo`) VALUES ('1', 'Gino', 'Gini', 'Firenze', '11111111111', 'Via Firenze 2');
+INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `telefono`, `indirizzo`) VALUES ('2', 'Fabio', 'Fabi', 'Roma', '22222222', 'Via Roma 4');
+INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `telefono`, `indirizzo`) VALUES ('3', 'Lucio', 'Luci', 'Bari', '333333333', 'Via Bari 6');
+INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `telefono`, `indirizzo`) VALUES ('4', 'Serena', 'Sereni', 'Milano', '4444444444', 'Via Milano 9');
+
+

@@ -22,5 +22,8 @@ request.setAttribute("list", list);
 	<tr><td>${u.getId()}</td><td>${u.getNome()}</td><td>${u.getCognome()}</td><td>${u.getEmail()}</td><td>${u.getTelefono()}</td><td>${u.getRuolo()}</td><td>${u.getStato()}</td><td>${u.getUsername()}</td></tr>
 </c:forEach>
 </table>
+
+<a href="showclienti.jsp">Vai alla pagina Clienti</a>
+
 </body>
 </html>
