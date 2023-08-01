@@ -29,7 +29,7 @@
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            
+            <!-- <a href="acquisticliente.jsp?idCliente=${c.getIdCliente()}" class="btn btn-primary" onclick="loginEffettuato()">Login</a> -->
             <button type="submit" class="btn btn-primary btn-block" onclick="loginEffettuato()">Login</button>
         </form>
     </div>

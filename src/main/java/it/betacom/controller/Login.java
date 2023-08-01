@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.betacom.bean.Utente;
 import it.betacom.dao.UtenteDao;
@@ -49,6 +50,13 @@ public class Login extends HttpServlet {
 		if(utente != null && utente.getRuolo().equals("M") ) {
 	        response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
 		}else if (utente != null && utente.getRuolo().equals("G")) {
+			
+			HttpSession session = request.getSession();
+			
+	        session.setAttribute("utenteId", utente.getId());
+	        session.setAttribute("nome", utente.getNome());
+	        session.setAttribute("cognome", utente.getCognome());
+
 	        response.sendRedirect(request.getContextPath() + "/arrivoguest.jsp");
 		}else {
 	        response.sendRedirect(request.getContextPath() + "/error.jsp");
