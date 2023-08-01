@@ -73,7 +73,8 @@ public class UpdateRuolo extends HttpServlet {
 		
 		UtenteDao.updateRuolo(id, nuovoRuolo);
 		
-		response.sendRedirect(request.getContextPath() + "/successomodifica.jsp");
+		response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
+
 
 	}
 

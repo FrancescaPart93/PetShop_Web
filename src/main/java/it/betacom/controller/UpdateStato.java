@@ -55,7 +55,7 @@ public class UpdateStato extends HttpServlet {
 		
 		UtenteDao.updateStato(id, nuovoStato);
 		
-		response.sendRedirect(request.getContextPath() + "/successomodifica.jsp");
+		response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
 	}
 
 }

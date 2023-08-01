@@ -56,8 +56,8 @@ public class UpdateManager extends HttpServlet {
 			UtenteDao.update(id, email, password, telefono);
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/successomodifica.jsp");
-		
+		response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
+
 
 	
 	}

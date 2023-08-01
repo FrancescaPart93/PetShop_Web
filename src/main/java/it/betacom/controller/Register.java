@@ -39,13 +39,23 @@ public class Register extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Qui gestisci la logica di registrazione e salvi i dati nel database
-        //creazione e salvataggio utente tramite Dao.save()
-        Utente utente = new Utente(request.getParameter("nome"), request.getParameter("cognome"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("password"), "G", "A", LocalDate.parse(request.getParameter("data")), 3);
-        UtenteDao.save(utente);
-
-        // Dopo aver completato la registrazione, reindirizza alla pagina di login
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        
+    	String email = request.getParameter("email");
+    	
+    	//controllo sulla email già esistente
+    	if(UtenteDao.getRecordByEmail(email) != null) {
+    		 response.sendRedirect(request.getContextPath() + "/error.jsp");    	
+    	}else {
+    	
+	        //creazione e salvataggio utente tramite Dao.save()
+	    	
+	        Utente utente = new Utente(request.getParameter("nome"), request.getParameter("cognome"), email, request.getParameter("telefono"), request.getParameter("password"), "G", "A", LocalDate.parse(request.getParameter("data")), 3);
+	        
+	        UtenteDao.save(utente);
+	
+	        // Dopo aver completato la registrazione, reindirizza alla pagina di login
+	        response.sendRedirect(request.getContextPath() + "/login.jsp");
+    	}    
     }
 
 }

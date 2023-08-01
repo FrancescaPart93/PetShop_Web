@@ -7,6 +7,6 @@
 <title>Error</title>
 </head>
 <body> 
-<h1> Errore, riprova il login!!</h1>
+<h1> Errore, riprova!!</h1>
 </body>
 </html>

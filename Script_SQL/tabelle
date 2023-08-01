@@ -26,3 +26,13 @@ INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `t
 INSERT INTO `petshop_web`.`clienti` (`idCliente`, `nome`, `cognome`, `citta`, `telefono`, `indirizzo`) VALUES ('4', 'Serena', 'Sereni', 'Milano', '4444444444', 'Via Milano 9');
 
 
+
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0001', 'criceto', 'Smidol', '02/10/2020', '0', '1');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0002', 'pesce', 'Nemo', '17/06/2019', '0', '1');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0003', 'cane', 'Billy', '28/03/2009', '0', '2');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0004', 'gatto', 'Charlie', '08/08/2018', '0', '3');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0005', 'tartaruga', 'Rughina', '07/11/2021', '0', '3');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0006', 'pappagallo', 'Rio', '04/02/2016', '0', '2');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0007', 'cane', 'Pluto', '05/05/2015', '0', '1');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0008', 'gatto', 'Luna', '09/12/2022', '0', '4');
+INSERT INTO `petshop_web`.`animali` (`matricola`, `tipo`, `nome`, `dataAcquisto`, `prezzo`, `idCliente`) VALUES ('0009', 'criceto', 'Teo', '16/07/2020', '0', '4');

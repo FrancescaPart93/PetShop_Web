@@ -10,7 +10,7 @@
 	<title>Arrivo manager</title>
 </head>
 <body>
-	<h1>Benvenuto Manager!!</h1>
+	<h1 class="text-center">Benvenuto Manager!!</h1>
 	<%
 	List<Utente> list = UtenteDao.getAllRecords();
 	request.setAttribute("list", list);
@@ -42,14 +42,14 @@
 					<form action="UpdateRuolo" method = "post">
 						<input type="hidden" name="id" value="${u.getId()}">
 						<input type="hidden" name="ruolo" value="${u.getRuolo()}">
-						<button type="submit" class="btn btn-warning">${u.getRuolo()}</button>	
+						<button type="submit" class="btn btn-warning" onclick="confermaSalvataggio()">${u.getRuolo()}</button>	
 					</form>
 				</td>
 				<td class = "p-2">
 					<form action="UpdateStato" method = "post">
 						<input type="hidden" name="id" value="${u.getId()}">
 						<input type="hidden" name="stato" value="${u.getStato()}">
-						<button type="submit" class="btn btn-warning">${u.getStato()}</button>	
+						<button type="submit" class="btn btn-warning" onclick="confermaSalvataggio()">${u.getStato()}</button>	
 					</form>
 				</td>
 				<td>
@@ -83,7 +83,7 @@
 						    </div>
 						  </div>
 							<div class="col-auto mt-2">
-						    	<button type="submit" class="btn btn-primary m-2"  data-id="${u.getId()}">Salva</button>
+						    	<button type="submit" class="btn btn-primary m-2"  data-id="${u.getId()}" onclick="confermaSalvataggio()">Salva</button>
 						  	</div>
 						</form>
 					  </ul>
@@ -94,6 +94,11 @@
 		</c:forEach>
 		
 	</table>
+	<script>
+        function confermaSalvataggio() {
+            alert("Modifiche effettuate con successo!");
+        }
+    </script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
