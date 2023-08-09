@@ -10,12 +10,48 @@
 	<title>Arrivo manager</title>
 </head>
 <body>
-	<h1 class="text-center">Benvenuto Manager!!</h1>
 	<%
+	if (session.getAttribute("nome") == null) {
+		response.sendRedirect("login.jsp");
+		return;
+	}else if(session.getAttribute("ruolo").equals("G")){
+		response.sendRedirect("arrivoguest.jsp");
+	}
 	List<Utente> list = UtenteDao.getAllRecords();
 	request.setAttribute("list", list);
 	%>
-	<table border="1" width="90%" class="mx-5 my-3 table-bordered border border-5 border-dark">
+	
+	<nav class="navbar navbar-expand-lg bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="index.jsp">PetShop</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="showutenti.jsp">Utenti</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="showclienti.jsp">Clienti</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="showanimali.jsp">Animali</a>
+	        </li>
+	      </ul>
+	    </div>
+	    <h1>${sessionScope.nome} ${sessionScope.cognome} </h1>
+		     <form action="Logout" method = "post">
+				<input type="hidden" name="id" value="${u.getId()}">
+				<button type="submit" class="btn btn-outline-danger btn-lg">Logout</button>	
+			</form>
+	  </div>
+	</nav>
+	
+	<h1 class="text-center">Benvenuto Manager!!</h1>
+	
+	<div class= "container">
+	<table border="1" width="90%" class="table table-success table-striped p-2 my-3 table-bordered border border-5 border-dark">
 		<tr>
 			<th class = "p-2">Id</th>
 			<th>Nome</th>
@@ -26,6 +62,7 @@
 			<th>Username</th>
 			<th>Ruolo</th>
 			<th>Stato</th>
+			<th></th>
 		</tr>
 
 		<c:forEach items="${list}" var="u">
@@ -59,7 +96,7 @@
 					    Modifica
 					  </button>
 					  <ul class="dropdown-menu">
-					  	<form action="UpdateManager" method="post" class="bg-success border border-dark border-5">
+					  	<form action="UpdateManager" method="post" class="bg-light border border-dark border-5">
 					  	  <!-- questo input nascosto mi permette di leggere automaticamente l'id dell'utente che si sta modificando -->
 					  	  <input type="hidden" name="id" value="${u.getId()}"> 
 					  	  
@@ -92,7 +129,7 @@
 			</tr>
 			
 		</c:forEach>
-		
+	</div>
 	</table>
 	<script>
         function confermaSalvataggio() {

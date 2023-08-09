@@ -29,11 +29,15 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Invalida la sessione se presente
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
+		
+		HttpSession session =  request.getSession();
 
+		 if (session != null) {
+			 session.invalidate();
+		 }
+		 
+		 session = request.getSession(false);
+		 
         // Reindirizza l'utente alla pagina di login 
         response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}

@@ -153,7 +153,7 @@ public class UtenteDao {
 	
 	
 	public static Utente controlloLogin(String email, String password, Utente utente) {
-        utente.toString();
+    //    utente.toString();
         if (utente != null && utente.getStato().equals("A")) {
             if (utente.getPassword().equals(password)) {
                 System.out.println("Accesso effettuato");

@@ -48,7 +48,15 @@ public class Login extends HttpServlet {
 		utente = UtenteDao.controlloLogin(email, password, utente);
 		
 		if(utente != null && utente.getRuolo().equals("M") ) {
+			
+			HttpSession session = request.getSession();
+			
+	        session.setAttribute("utenteId", utente.getId());
+	        session.setAttribute("nome", utente.getNome());
+	        session.setAttribute("cognome", utente.getCognome());
+	        session.setAttribute("ruolo", utente.getRuolo());
 	        response.sendRedirect(request.getContextPath() + "/arrivomanager.jsp");
+	        
 		}else if (utente != null && utente.getRuolo().equals("G")) {
 			
 			HttpSession session = request.getSession();
@@ -56,13 +64,17 @@ public class Login extends HttpServlet {
 	        session.setAttribute("utenteId", utente.getId());
 	        session.setAttribute("nome", utente.getNome());
 	        session.setAttribute("cognome", utente.getCognome());
+	        session.setAttribute("ruolo", utente.getRuolo());
+
 
 	        response.sendRedirect(request.getContextPath() + "/arrivoguest.jsp");
-		}else {
-	        response.sendRedirect(request.getContextPath() + "/error.jsp");
-
-		}
+		} else {
+	        // Display the login feedback message
+	        request.setAttribute("loginFailed", true);
+	        request.getRequestDispatcher("login.jsp").forward(request, response);
+	    }
 	}
+	
 	
 
 
